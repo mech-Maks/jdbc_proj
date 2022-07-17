@@ -11,6 +11,7 @@ public class MainController {
 
     @GetMapping("/")
     public String greeting() {
-        return "Hello, you are on the main page!";
+        String val = System.getProperty("max.dick");
+        return "Hello, you are on the main page! " + val;
     }
 }

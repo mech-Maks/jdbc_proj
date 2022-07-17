@@ -1,7 +1,7 @@
 package com.example.jdbc_proj.controllers;
 
 import com.example.jdbc_proj.dao.UserDao;
-import com.example.jdbc_proj.dao.UserDaoImpl;
+import com.example.jdbc_proj.dao.UserDaoImplJdbcTemplate;
 import com.example.jdbc_proj.model.UserDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,13 +18,13 @@ public class UsersController {
     private final UserDao userDao;
 
     public UsersController(JdbcTemplate jdbcTemplate) {
-        this.userDao = new UserDaoImpl(jdbcTemplate);
+        this.userDao = new UserDaoImplJdbcTemplate(jdbcTemplate);
     }
 
     @PostMapping(value = "/addUser", consumes = "application/json", produces = "application/json")
-    public UserDto addNewUser(@RequestBody UserDto user) {
+    public long addNewUser(@RequestBody UserDto user) {
         logger.info("added new user");
-        return null;
+        return userDao.addUser(user);
     }
 
     @GetMapping(value = "/getUsers", produces = "application/json")

@@ -6,6 +6,15 @@ public class UserDto {
     private int age;
     private long id;
 
+    public UserDto(String name, String email, int age, long id) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.id = id;
+    }
+
+    public UserDto() {};
+
     public int getAge() {
         return age;
     }
